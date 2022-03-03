@@ -1,0 +1,148 @@
+
+
+<%- include("partials/header.ejs") -%>
+
+
+
+
+
+
+<style>
+   .h12{
+
+    margin-top: 1.5%;
+     margin-left: 45%;
+     font-style: italic;
+     text-decoration: underline;
+     text-decoration-thickness: from-font;
+    font-family:Arial, Helvetica, sans-serif;
+     
+
+   }
+
+   h2{
+      margin-top: 1.5%;
+      margin-left: 0.5%;
+      font-family:Arial, Helvetica, sans-serif;
+
+   }
+
+   p{
+
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-weight: 550;
+    
+
+   }
+
+.readit{
+
+
+   color:purple; 
+   font-size: 12.5px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   font-style: italic;
+   transition: 0.15s;
+   text-decoration: none;
+}
+
+.readit:hover{
+
+   opacity: 0.4;
+   font-size: 13.5px;
+   color:black; 
+   text-decoration:underline;
+}
+
+.composeicon{
+
+   opacity: 0.4;
+   margin-left: 1%;
+
+}
+
+.composeicon:hover{
+
+   opacity: 0.8;
+
+
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+   
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.5;
+}
+
+</style>
+
+<script>
+
+    document.getElementById("homenav").classList.add("active2");
+    
+  
+  </script>
+
+<div class="container-fluid" style="padding-bottom: 32%; margin-left: 2.3%; width: 90%;">
+  
+<h1 class="h12">Home<a href="/compose" ><div     class="fas fa-plus-circle  composeicon tooltip"  style="font-size: 55%; "  > <span class="tooltiptext"    style="  font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 60%; font-weight: 1; ">Add post</span></div></a> </h1>
+
+<p><%=contentr %> </p>
+ 
+ 
+
+
+<% newpost.forEach(function(np3) {
+  
+ %> 
+            
+    <h2  ><%=np3.title%></h2>
+    <%let targetadd= "/posts/"+np3.title%>
+    <% let truncates = np3.post.substring(0, 150);  %>
+    
+    <p> <%=truncates  %>... <a href = "<%=targetadd%>"   class="readit">Read more </a> </p>
+     
+  
+
+
+  <% }); %> 
+
+
+
+</div>
+
+
+<%- include("partials/footer.ejs") -%>
